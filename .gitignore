@@ -33,4 +33,6 @@ bin
 .vs
 .vscode
 typings
+output
+coverage
 *.bat
