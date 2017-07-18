@@ -63,7 +63,7 @@
     "AWS",
     "AWS IOT"
   ],
-  "name": "microservicebus.node",
+  "name": "microservicebus-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/microServiceBus/microservicebus.node"
