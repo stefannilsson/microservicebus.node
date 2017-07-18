@@ -27,12 +27,12 @@ build/Release
 node_modules
 
 microServiceBus.BizTalk
+output
 persist
 obj
 bin
 .vs
 .vscode
 typings
-output
 coverage
 *.bat
