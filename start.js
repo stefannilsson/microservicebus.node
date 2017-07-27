@@ -238,7 +238,7 @@ function start(d) {
                 console.log(util.padRight(" Current version: " + version + ". New version: " + latest, maxWidth, ' ').bgGreen.white.bold);
                 console.log(util.padRight("", maxWidth, ' ').bgGreen.white.bold);
                 console.log();
-   		console.log("Start installing core").bgRed.white;
+   		console.log("Start installing core".bgRed.white);
 
                 util.addNpmPackage("microservicebus.core", true, function (err) {
                     if (err) {
