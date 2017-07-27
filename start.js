@@ -223,7 +223,7 @@ function start(d) {
         .then(function (rawData) {
             var packageFile = rootFolder + '/node_modules/microservicebus.core/package.json';
             var corePjson;
-	    console.log("packageFile" + packageFile).bgRed.white;
+	    console.log("packageFile".bgRed.white + packageFile);
 
             if (fs.existsSync(packageFile)) {
                 corePjson = require(packageFile);
@@ -246,7 +246,7 @@ function start(d) {
                         console.log(err.bgRed.white);
                     }
 		    else{
-			console.log("Core installed successfully").bgRed.white;
+			console.log("Core installed successfully".bgRed.white);
 
                         microServiceBusHost.Start();
 		    }
