@@ -1,4 +1,4 @@
-﻿/*
+/*
 The MIT License (MIT)
 
 Copyright (c) 2014 microServiceBus.com
@@ -223,6 +223,7 @@ function start(d) {
         .then(function (rawData) {
             var packageFile = rootFolder + '/node_modules/microservicebus.core/package.json';
             var corePjson;
+	    console.log("packageFile" + packageFile).bgRed.white;
 
             if (fs.existsSync(packageFile)) {
                 corePjson = require(packageFile);
@@ -237,12 +238,18 @@ function start(d) {
                 console.log(util.padRight(" Current version: " + version + ". New version: " + latest, maxWidth, ' ').bgGreen.white.bold);
                 console.log(util.padRight("", maxWidth, ' ').bgGreen.white.bold);
                 console.log();
+   		console.log("Start installing core").bgRed.white;
 
                 util.addNpmPackage("microservicebus.core", true, function (err) {
                     if (err) {
                         console.log("Unable to install core update".bgRed.white);
+                        console.log(err.bgRed.white);
                     }
-                    microServiceBusHost.Start();
+		    else{
+			console.log("Core installed successfully").bgRed.white;
+
+                        microServiceBusHost.Start();
+		    }
                 });
             }
             else {
