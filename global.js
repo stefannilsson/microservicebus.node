@@ -1,5 +1,2 @@
-﻿#!/usr/bin/env node
-
- console.log('Works so far...');
-
-//require("./start.js");
+#!/usr/bin/env node
+console.log("Hello from microservicebus.node");
