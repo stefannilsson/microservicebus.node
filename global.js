@@ -1,3 +1,5 @@
 ﻿#!/usr/bin/env node
 
-require("./start.js");
+ console.log('Works so far...');
+
+//require("./start.js");
