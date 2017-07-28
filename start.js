@@ -242,7 +242,7 @@ function start(d) {
                 util.addNpmPackage("microservicebus.core", true, function (err) {
                     if (err) {
                         console.log("Unable to install core update".bgRed.white);
-                        console.log("Error": err.bgRed.white);
+                        console.log("Error: " + err);
                     }
 		    else{
 			console.log("Core installed successfully".bgRed.white);
