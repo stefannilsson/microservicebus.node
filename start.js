@@ -223,8 +223,7 @@ function start(d) {
         .then(function (rawData) {
             var packageFile = rootFolder + '/node_modules/microservicebus.core/package.json';
             var corePjson;
-	    console.log("rootdir".bgRed.white + process.cwd());
-
+	   
             if (fs.existsSync(packageFile)) {
                 corePjson = require(packageFile);
             }
@@ -243,7 +242,7 @@ function start(d) {
                 util.addNpmPackage("microservicebus.core", true, function (err) {
                     if (err) {
                         console.log("Unable to install core update".bgRed.white);
-                        console.log(err.bgRed.white);
+                        console.log("Error": err.bgRed.white);
                     }
 		    else{
 			console.log("Core installed successfully".bgRed.white);
