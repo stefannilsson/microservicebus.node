@@ -196,16 +196,17 @@ function start(d) {
             console.log(JSON.stringify(process.argv, null, 4).bgBlue);
             
             var path = require("path");
-            var packageFile = path.resolve(rootFolder, '/node_modules/microservicebus.core/package.json');
+            var packageFile = path.resolve(rootFolder, 'node_modules/microservicebus.core/package.json');
 
             // Check if node is started as Snap
             if (process.argv[1].endsWith("startsnap")) {
                 console.log("Loading microservicebus.core/package.json for snap");
-                var homeDirectory = process.env["PWD"];
+                var homeDirectory = ".";
                 packageFile = path.resolve(homeDirectory, "node_modules/microservicebus.core/package.json");
             }
-            // /home/admin/node_modules/microservicebus.core
+
             console.log("packageFile: ".bgBlue + packageFile.bgBlue);
+
             var corePjson;
 
             if (fs.existsSync(packageFile)) {
