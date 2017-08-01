@@ -30,23 +30,18 @@ require('colors');
 
 var args = process.argv.slice(2);
 
+var SettingsHelper = require("./lib/SettingsHelper.js");
+var settingsHelper = new SettingsHelper();
+
 if (args.length > 0) {
     switch (args[0]) {
+ 
         case '-all':
-            deleteFolderRecursive('./microServiceBus.BizTalk');
-            deleteFolderRecursive('./data');
-            deleteFolderRecursive('./output');
-            deleteFolderRecursive('./persist');
-            deleteFolderRecursive('./cert');
-            deleteFolderRecursive('./node_modules/microservicebus.core');
-            console.log("Deleted".green);
-            break;
-        case '-cert':
-            deleteFolderRecursive('./microServiceBus.BizTalk');
-            deleteFolderRecursive('./data');
-            deleteFolderRecursive('./output');
-            deleteFolderRecursive('./persist');
-            deleteFolderRecursive('./cert');
+            deleteFolderRecursive(settingsHelper.homeDirectory + '/microServiceBus.BizTalk');
+            deleteFolderRecursive(settingsHelper.homeDirectory + '/data');
+            deleteFolderRecursive(settingsHelper.homeDirectory + '/output');
+            deleteFolderRecursive(settingsHelper.homeDirectory + '/persist');
+            deleteFolderRecursive(settingsHelper.homeDirectory + '/cert');
             console.log("Deleted".green);
             break;
         case '-debug':
@@ -68,17 +63,16 @@ if (args.length > 0) {
     }
 }
 
-//if (fs.existsSync('./settings.json'))
-//    fs.unlinkSync('./settings.json');
 // Update settings
-settings = {
+
+settingsHelper.settings = {
     "hubUri": site,
     "trackMemoryUsage": 0,
     "enableKeyPress": false,
     "useEncryption": false,
     "log": ""
 }
-util.saveSettings(settings);
+settingsHelper.save();
 console.log("Settings updated".green);
 console.log();
 

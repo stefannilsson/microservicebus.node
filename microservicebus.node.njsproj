@@ -5,8 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>microservicebus.node</Name>
     <RootNamespace>microservicebus.host</RootNamespace>
-    <ScriptArguments>
-    </ScriptArguments>
+    <ScriptArguments>-c DUCOP24U -n dell3001</ScriptArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -36,7 +35,7 @@
     <Compile Include="globalRestore.js" />
     <Compile Include="global.js" />
     <Compile Include="Gruntfile.js" />
-    <Compile Include="lib\Settings.js">
+    <Compile Include="lib\SettingsHelper.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="lib\_v8debug\breakpoint-manager.js" />
@@ -67,7 +66,7 @@
     <Content Include="metadata.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="lib\settings.json" />
+    <Content Include="lib\_settings.json" />
     <Content Include="lib\templates\swaggerTemplate.json" />
     <Compile Include="test\testData.js" />
   </ItemGroup>

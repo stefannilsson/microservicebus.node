@@ -141,7 +141,7 @@ function startWithoutDebug() {
 
 function start(d) {
     var started = false;
-    
+
     let args = process.argv.slice(1);
     var rootFolder = process.arch == 'mipsel' ? '/mnt/sda1' : __dirname;
 
@@ -156,7 +156,7 @@ function start(d) {
     console.log(util.padRight("", maxWidth, ' ').bgBlue.white.bold);
 
     console.log();
-    
+
     // Check if there is a later npm package
     checkVersion("microservicebus.node")
         .then(function (rawData) {
@@ -174,43 +174,30 @@ function start(d) {
         });
 
     // Load settings 
-    try {
-        var settings = {
-            "debug": false,
-            "hubUri": "wss://microservicebus.com"
-        }
-        if (fs.existsSync(rootFolder + '/lib/settings.json')) {
-            var data = fs.readFileSync(rootFolder + '/lib/settings.json');
-            settings = JSON.parse(data);
-        }
-    }
-    catch (err) {
-        console.log('Invalid settings file.'.red);
-        console.log(err);
-        process.abort();
-    }
+    var SettingsHelper = require("./lib/SettingsHelper.js");
+    var settingsHelper = new SettingsHelper();
+
+    //try {
+    //    var settings = {
+    //        "debug": false,
+    //        "hubUri": "wss://microservicebus.com"
+    //    }
+    //    if (fs.existsSync(rootFolder + '/lib/settings.json')) {
+    //        var data = fs.readFileSync(rootFolder + '/lib/settings.json');
+    //        settings = JSON.parse(data);
+    //    }
+    //}
+    //catch (err) {
+    //    console.log('Invalid settings file.'.red);
+    //    console.log(err);
+    //    process.abort();
+    //}
 
     var MicroServiceBusHost = require("./lib/microServiceBusHost.js");
-    var microServiceBusHost = new MicroServiceBusHost(settings);
+    var microServiceBusHost = new MicroServiceBusHost(settingsHelper);
 
     microServiceBusHost.OnStarted(function (loadedCount, exceptionCount) {
-        if (settings.trackMemoryUsage != undefined && settings.trackMemoryUsage > 0) {
-            console.log("");
-            console.log("---------------------------------------------------------------------------".bgBlue.white.bold)
-            console.log("|          rss           |        heapTotal       |        heapUsed       |".bgBlue.white.bold)
-            console.log("---------------------------------------------------------------------------".bgBlue.white.bold)
-
-            if (!started) {
-                started = true;
-                setInterval(function () {
-                    memUsage = process.memoryUsage();
-
-                    var str = "|" + util.padLeft(memUsage.rss.toLocaleString(), 23, ' ') + " |" + util.padLeft(memUsage.heapTotal.toLocaleString(), 23, ' ') + " |" + util.padLeft(memUsage.heapUsed.toLocaleString(), 22, ' ') + " |";
-                    console.log(str.bgBlue.white.bold);
-
-                }, settings.trackMemoryUsage);
-            }
-        }
+        
     });
     microServiceBusHost.OnStopped(function () {
 
@@ -218,12 +205,12 @@ function start(d) {
     microServiceBusHost.OnUpdatedItineraryComplete(function () {
 
     });
-    
+
     checkVersion("microservicebus.core")
         .then(function (rawData) {
             var packageFile = rootFolder + '/node_modules/microservicebus.core/package.json';
             var corePjson;
-	   
+
             if (fs.existsSync(packageFile)) {
                 corePjson = require(packageFile);
             }
@@ -237,18 +224,18 @@ function start(d) {
                 console.log(util.padRight(" Current version: " + version + ". New version: " + latest, maxWidth, ' ').bgGreen.white.bold);
                 console.log(util.padRight("", maxWidth, ' ').bgGreen.white.bold);
                 console.log();
-   		console.log("Start installing core".bgRed.white);
+                console.log("Start installing core".bgRed.white);
 
                 util.addNpmPackage("microservicebus.core", true, function (err) {
                     if (err) {
                         console.log("Unable to install core update".bgRed.white);
                         console.log("Error: " + err);
                     }
-		    else{
-			console.log("Core installed successfully".bgRed.white);
+                    else {
+                        console.log("Core installed successfully".bgRed.white);
 
                         microServiceBusHost.Start();
-		    }
+                    }
                 });
             }
             else {
