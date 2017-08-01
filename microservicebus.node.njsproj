@@ -35,7 +35,7 @@
     <Compile Include="globalRestore.js" />
     <Compile Include="global.js" />
     <Compile Include="Gruntfile.js" />
-    <Compile Include="lib\_SettingsHelper.js">
+    <Compile Include="lib\SettingsHelper.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="lib\_v8debug\breakpoint-manager.js" />
