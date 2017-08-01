@@ -193,14 +193,16 @@ function start(d) {
     checkVersion("microservicebus.core")
         .then(function (rawData) {
 
-            console.log(process.argv.bgBlue);
-
+            console.log(JSON.stringify(process.argv, null, 4).bgBlue);
+            
             var path = require("path");
             var packageFile = path.resolve(rootFolder, '/node_modules/microservicebus.core/package.json');
 
             // Check if node is started as Snap
             if (process.argv[1].endsWith("startsnap")) {
-                packageFile = "./node_modules/microservicebus.core/package.json";
+                console.log("Loading microservicebus.core/package.json for snap");
+                var homeDirectory = process.env["HOME"];
+                packageFile = path.resolve(homeDirectory, "node_modules/microservicebus.core/package.json");
             }
 
             console.log("packageFile: ".bgBlue + packageFile.bgBlue);
@@ -209,7 +211,7 @@ function start(d) {
             if (fs.existsSync(packageFile)) {
                 corePjson = require(packageFile);
             }
-            var latest = rawData['dist-tags'].latest;
+            var latest = rawData['dist-tags'].beta;
 
             if (corePjson === undefined || util.compareVersion(corePjson.version, latest) < 0) {
                 var version = corePjson === undefined ? "NONE" : corePjson.version;
