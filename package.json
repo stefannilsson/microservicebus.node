@@ -5,7 +5,8 @@
     "url": "https://microservicebus.com"
   },
   "bin": {
-    "startnode": "global.js"
+    "startnode": "global.js",
+    "startsnap": "global.js"
   },
   "dependencies": {
     "app-module-path": "^2.2.0",

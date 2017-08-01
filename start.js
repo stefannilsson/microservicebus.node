@@ -176,23 +176,7 @@ function start(d) {
     // Load settings 
     var SettingsHelper = require("./lib/SettingsHelper.js");
     var settingsHelper = new SettingsHelper();
-
-    //try {
-    //    var settings = {
-    //        "debug": false,
-    //        "hubUri": "wss://microservicebus.com"
-    //    }
-    //    if (fs.existsSync(rootFolder + '/lib/settings.json')) {
-    //        var data = fs.readFileSync(rootFolder + '/lib/settings.json');
-    //        settings = JSON.parse(data);
-    //    }
-    //}
-    //catch (err) {
-    //    console.log('Invalid settings file.'.red);
-    //    console.log(err);
-    //    process.abort();
-    //}
-
+    
     var MicroServiceBusHost = require("./lib/microServiceBusHost.js");
     var microServiceBusHost = new MicroServiceBusHost(settingsHelper);
 
@@ -208,7 +192,16 @@ function start(d) {
 
     checkVersion("microservicebus.core")
         .then(function (rawData) {
-            var packageFile = rootFolder + '/node_modules/microservicebus.core/package.json';
+
+            console.log(process.argv.bgBlue);
+
+            var path = require("path");
+            var packageFile = path.resolve(rootFolder, '/node_modules/microservicebus.core/package.json');
+
+            // Check if node is started as Snap
+            if (process.argv[1].endsWith("startsnap")) {
+                packageFile = "./node_modules/microservicebus.core/package.json";
+            }
 
             console.log("packageFile: ".bgBlue + packageFile.bgBlue);
             var corePjson;
