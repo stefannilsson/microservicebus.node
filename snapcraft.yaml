@@ -1,0 +1,18 @@
+name: microservicebus-node
+version: '0.1' 
+summary: ...
+description: |
+  ...
+grade: devel 
+confinement: devmode 
+
+apps:
+  microservicebus-node:
+    command: bin/startnode
+
+
+parts:
+  hello:
+    source: https://github.com/microServiceBus/microservicebus.node.git
+    source-branch: ubuntu-core
+    plugin: nodejs

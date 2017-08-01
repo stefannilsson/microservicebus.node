@@ -69,6 +69,7 @@
     <Content Include="lib\_settings.json" />
     <Content Include="lib\templates\swaggerTemplate.json" />
     <Compile Include="test\testData.js" />
+    <Content Include="snapcraft.yaml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\" />
