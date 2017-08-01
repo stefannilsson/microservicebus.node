@@ -209,6 +209,8 @@ function start(d) {
     checkVersion("microservicebus.core")
         .then(function (rawData) {
             var packageFile = rootFolder + '/node_modules/microservicebus.core/package.json';
+
+            console.log("packageFile: ".bgBlue + packageFile.bgBlue);
             var corePjson;
 
             if (fs.existsSync(packageFile)) {
