@@ -6,7 +6,7 @@ var module = require('module');
 // Check if node is started as Snap
 if (process.argv[1].endsWith("startsnap")) {
     console.log("Loading microservicebus.core/package.json for snap");
-    homeDirectory = process.env["HOME"];
+    homeDirectory = process.env["PWD"];
 }
 
 var packagePath = path.resolve(process.env.APPDATA ? process.env.APPDATA : homeDirectory, "node_modules");
