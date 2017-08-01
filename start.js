@@ -201,10 +201,10 @@ function start(d) {
             // Check if node is started as Snap
             if (process.argv[1].endsWith("startsnap")) {
                 console.log("Loading microservicebus.core/package.json for snap");
-                var homeDirectory = process.env["HOME"];
+                var homeDirectory = process.env["PWD"];
                 packageFile = path.resolve(homeDirectory, "node_modules/microservicebus.core/package.json");
             }
-
+            // /home/admin/node_modules/microservicebus.core
             console.log("packageFile: ".bgBlue + packageFile.bgBlue);
             var corePjson;
 
