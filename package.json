@@ -8,6 +8,7 @@
     "startnode": "global.js"
   },
   "dependencies": {
+    "app-module-path": "^2.2.0",
     "async": "1.4.2",
     "colors": "1.1.2",
     "compare-version": "0.1.2",
