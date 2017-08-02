@@ -17,11 +17,6 @@ module.globalPaths.push(packagePath);
 
 module._initPaths();
 
-console.log('After');
-for (var i = 0; i < require.main.paths.length; i++) {
-    console.log(require.main.paths[i]);
-}
-
 console.log("microservicebus.node started as Snap");
 
 require("./start.js");

@@ -227,6 +227,11 @@ function start(d) {
                 console.log();
                 console.log("Start installing core".bgRed.white);
 
+                console.log('Loaded NPM Paths');
+                for (var i = 0; i < require.main.paths.length; i++) {
+                    console.log(require.main.paths[i]);
+                }
+
                 util.addNpmPackage("microservicebus.core@beta", true, function (err) {
                     if (err) {
                         console.log("Unable to install core update".bgRed.white);
