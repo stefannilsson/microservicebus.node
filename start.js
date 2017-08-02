@@ -212,6 +212,9 @@ function start(d) {
             if (fs.existsSync(packageFile)) {
                 corePjson = require(packageFile);
             }
+            else {
+                console.log("packageFile not found".red);
+            }
             var latest = rawData['dist-tags'].beta;
 
             if (corePjson === undefined || util.compareVersion(corePjson.version, latest) < 0) {
