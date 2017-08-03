@@ -232,7 +232,8 @@ function start(d) {
                     console.log(require.main.paths[i]);
                 }
 
-                util.addNpmPackage("microservicebus.core@beta", true, function (err) {
+                //util.addNpmPackage("microservicebus.core@beta", true, function (err) {
+                util.addNpmPackage("iot-simlators@latest", true, function (err) {
                     if (err) {
                         console.log("Unable to install core update".bgRed.white);
                         console.log("Error: " + err);
