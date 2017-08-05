@@ -11,7 +11,7 @@ module.paths.unshift(packagePath);
 
 require('colors');
 
-//require('app-module-path').addPath('/home/admin/node_modules');
+//require('app-module-path').addPath('/home/admin/node_modules'); 
 
 //var path = require("path");
 //var packagePath = path.resolve(".", "node_modules");
