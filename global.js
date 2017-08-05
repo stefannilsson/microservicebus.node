@@ -2,11 +2,13 @@
 
 
 var packagePath = '/home/admin/node_modules';
-process.env.NODE_DEBUG = "module";
-process.env.NODE_PATH = packagePath;
-process.env.HOME = packagePath;
+//process.env.NODE_DEBUG = "module";
+//process.env.NODE_PATH = packagePath;
+//process.env.HOME = packagePath;
 
-require('module')._initPaths();
+//require('module')._initPaths();
+module.paths.unshift(packagePath);
+
 require('colors');
 
 //require('app-module-path').addPath('/home/admin/node_modules');
