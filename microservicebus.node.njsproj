@@ -55,6 +55,9 @@
     <Compile Include="restore.js" />
     <Compile Include="server.js" />
     <Compile Include="start.js" />
+    <Compile Include="start2.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="test\unittests.js" />
     <Compile Include="lib\Utils.js" />
     <Content Include=".coveralls.yml" />

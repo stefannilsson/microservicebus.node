@@ -6,7 +6,8 @@
   },
   "bin": {
     "startnode": "global.js",
-    "startsnap": "global.js"
+    "startsnap": "global.js",
+    "startsnap2": "start2.js"
   },
   "dependencies": {
     "app-module-path": "^2.2.0",

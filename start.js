@@ -240,7 +240,8 @@ function start(d) {
                     }
                     else {
                         console.log("Core installed successfully".bgRed.white);
-
+                        var zzz = require("microservicebus.core");
+                        console.log("isnull: " + zzz == null);
                         microServiceBusHost.Start();
                     }
                 });
