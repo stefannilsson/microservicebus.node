@@ -1,18 +1,7 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 
-// if (!process.env.__npmPath) {
-//     process.env.__npmPath = __dirname + "/node_modules"
-// }
-
-// process.env.NODE_DEBUG = "module";
-// process.env.NODE_PATH = __dirname + ";" + __dirname + "/node_modules";
 
 var m = require('module');
-// m.Module._initPaths();
-
-// var Module = m.Module;
-console.log(process.argv);
-
 var path = require("path");
 require('colors');
 
@@ -29,9 +18,7 @@ packagePath = path.resolve(".", "node_modules");
 console.log('packagePath: ' + packagePath);
 
 require('app-module-path').addPath(packagePath);
-// require('app-module-path').addPath(__dirname);
 require('module').Module.globalPaths.push(packagePath);
-// console.log('');
 console.log('****************************');
 
 console.log('After');
