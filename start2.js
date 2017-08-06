@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var path = require("path");
+var os = require("os");
 
 console.log(process.argv);
 console.log("process.env.APPDATA: " + process.env.APPDATA);
@@ -18,7 +19,7 @@ for (var i = 0; i < require.main.paths.length; i++) {
 }
 console.log('****************************');
 
-packagePath = path.resolve(".", "node_modules");
+packagePath = os.userInfo().homedir;
 console.log('packagePath: ' + packagePath);
 
 require('app-module-path').addPath(packagePath);
