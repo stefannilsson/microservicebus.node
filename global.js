@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 var path = require("path");
+var os = require('os');
+
 var packagePath = path.resolve(os.homedir(), 'node_modules');
 
 process.env.NODE_DEBUG = "module";
