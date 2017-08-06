@@ -5,9 +5,12 @@ var os = require('os');
 
 var packagePath = path.resolve(os.homedir(), 'node_modules');
 
-process.env.NODE_DEBUG = "module";
-process.env.NODE_PATH = packagePath;
-process.env.HOME = os.homedir();
+if (process.argv.indexOf("--debug")) {
+    process.env.NODE_DEBUG = "module";
+}
+
+//process.env.NODE_PATH = packagePath;
+//process.env.HOME = os.homedir();
 
 require('app-module-path').addPath(packagePath);
 require('module').globalPaths.push(packagePath);
